@@ -1,0 +1,18 @@
+// 'ash' OSX terminal helper
+// http://github.com/c3w/ash
+
+{
+	"me":
+		{ "fqdn": "localhost",
+		  "type": "development"
+		},
+	"mars":
+		{ "fqdn": "mars.local",
+		  "type": "webserver",
+                  "port": "22",
+		  "user": "myuser",
+		  "tunnel": "www.something.com",
+		  "tunnel_user": "root",
+ 		  "tunnel_port": "22"
+		}
+}

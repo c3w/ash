@@ -1,0 +1,14 @@
+'Ash' v0.1
+http://github.com/c3w/ash
+2011OCT05 c3w
+
+. a Ruby SSH helper script
+. reads a JSON config file to read host, FQDN, user, port, tunnel options
+. changes OSX Terminal profiles based on host 'type'
+
+USAGE:
+put 'ash' ruby script in your PATH
+modify and copy ashrc-dist to ~/.ashrc
+configure OSX Terminal profiles, such as "webserver", "development", etc
+run "ash myhostname" and away you go!
+
