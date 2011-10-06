@@ -47,7 +47,6 @@ stuff.each do|k,v|
     else
       cmd = "ssh #{$port} #{$user} #{$fqdn}"
     end
-    puts cmd
     system(cmd)
 end
 
