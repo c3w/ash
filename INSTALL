@@ -1,0 +1,21 @@
+'ash' installation notes ::
+
+Tested with ruby 1.9.2p290
+
+requires json gem, readline, and ruby built with iconv
+
+I had some trouble on one of my machines, and this is how I fixed it:
+
+if you're running 'rvm' you can install thusly:
+ rvmsudo gem install json
+ rvm pkg install readline
+ rvm pkg install iconv
+ rvm install 1.9.2 --with-iconv-dir=$rvm_path/usr
+ rvm use 1.9.2 --default 
+
+$ irb
+ruby-1.9.2-p290 :001 > require 'json'
+ => true 
+^D
+
+--c3w
