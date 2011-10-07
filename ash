@@ -16,26 +16,21 @@ stuff = hash.select{|key, hash| key == host}
 
 stuff.each do|k,v|
     v.each do|key, value|
-      if key == "type"
-        $type = "#{value}"
-      end
-      if key == "port"
-        $port = "-p #{value} "
-      end
-      if key == "tunnel_port"
-	$tunnel_port = "-p #{value} "
-      end
-      if key == "tunnel_user"
-	$tunnel_user = "-l #{value} "
-      end
-      if key == "tunnel"
-        $tunnel = "-t #{value} "
-      end
-      if key == "fqdn"
-        $fqdn = "#{value} "
-      end
-      if key == "user"
-        $user = "-l #{value} "
+      case key
+        when "fqdn"
+          $fqdn = "#{value} "
+        when "type"
+          $type = "#{value}"
+        when "port"
+          $port = "-p #{value} "
+        when "user"
+          $user = "-l #{value} "
+        when "tunnel"
+          $tunnel = "-t #{value} "
+        when "tunnel_port"
+	  $tunnel_port = "-p #{value} "
+        when "tunnel_user"
+	  $tunnel_user = "-l #{value} "
       end
     end
 
