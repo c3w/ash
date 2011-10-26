@@ -1,5 +1,14 @@
 'Ash' v0.1
 http://github.com/c3w/ash
+
+2011OCT25 c3w
+
+TAB host auto-complete added!
+#~/.bash_profile
+ complete -W "$(~/bin/ash_helper)" ash
+
+SSH -A added for Forwarding Agent; useful for tunneling with a single local ssh key
+
 2011OCT05 c3w
 
 . a Ruby SSH helper script

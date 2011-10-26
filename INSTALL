@@ -18,4 +18,7 @@ ruby-1.9.2-p290 :001 > require 'json'
  => true 
 ^D
 
+## add the following line to your ~/.bash_profile for TAB autocomplete
+complete -W "$(~/bin/ash_helper)" ash
+
 --c3w

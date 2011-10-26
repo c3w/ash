@@ -38,9 +38,9 @@ stuff.each do|k,v|
     system(cmd)
 
     if $tunnel != ""
-      cmd = "ssh #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"ssh #{$port} -t #{$fqdn} #{$user}\""
+      cmd = "ssh -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"ssh #{$port} -t #{$fqdn} #{$user}\""
     else
-      cmd = "ssh #{$port} #{$user} #{$fqdn}"
+      cmd = "ssh -A #{$port} #{$user} #{$fqdn}"
     end
     system(cmd)
 end

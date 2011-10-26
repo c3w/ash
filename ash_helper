@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+ashrc = ENV['HOME'] + "/.ashrc"
+$tunnel = ""
+host = ARGV[0]
+$default_profile = "Pro"
+
+f = File.open(ashrc, 'r')
+json = f.read
+hash = JSON.parse(json)
+
+hash.keys.each do |key| puts key; end
