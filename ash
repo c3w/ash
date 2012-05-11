@@ -31,6 +31,8 @@ stuff.each do|k,v|
 	  $tunnel_port = "-p #{value} "
         when "tunnel_user"
 	  $tunnel_user = "-l #{value} "
+        when "screen"
+	  $screen = "screen -R #{value} "
       end
     end
 
@@ -38,9 +40,9 @@ stuff.each do|k,v|
     system(cmd)
 
     if $tunnel != ""
-      cmd = "ssh -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"ssh #{$port} -t #{$fqdn} #{$user}\""
+      cmd = "ssh -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
     else
-      cmd = "ssh -A #{$port} #{$user} #{$fqdn}"
+      cmd = "ssh -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
     end
     system(cmd)
 end

@@ -1,5 +1,10 @@
-'Ash' v0.1
+'Ash' v0.2
 http://github.com/c3w/ash
+
+2012MAY10 c3w
+
+added 'screen' option in the ashrc json
+	. great for wonky networks and ssh tunnels
 
 2011OCT25 c3w
 
