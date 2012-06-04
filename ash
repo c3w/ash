@@ -32,7 +32,7 @@ stuff.each do|k,v|
         when "tunnel_user"
 	  $tunnel_user = "-l #{value} "
         when "screen"
-	  $screen = "screen -R #{value} "
+	  $screen = "screen -x -r #{value} "
       end
     end
 
