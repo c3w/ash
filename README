@@ -3,6 +3,10 @@ http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 
+2013AUG13 c3w
+	. added example Terminal profiles
+	. added a csv importer that accepts: shortname,fqdn,profile type
+
 2012MAY10 c3w
 
 added 'screen' option in the ashrc json
