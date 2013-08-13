@@ -1,0 +1,27 @@
+#!/bin/bash
+
+###
+## ashrc builder
+## 
+
+if [ ! ${1} ]; then {
+	echo "Usage: ./builder [csv]"
+	echo "see example.csv"
+	exit
+}; fi
+
+echo "// ashRC github.com/c3w/ash" > ashrc.build
+echo >> ashrc.build
+echo "{" >> ashrc.build
+
+for line in $(cat $1); do {
+	shortname=$(echo ${line}|cut -d, -f1)
+	fqdn=$(echo ${line}|cut -d, -f2)
+	type=$(echo ${line}|cut -d, -f3)
+	cat ashrc-skel | sed -e "s/%%SHORTNAME%%/$shortname/g;s/%%FQDN%%/$fqdn/g;s/%%TYPE%%/$type/g" >> ashrc.build
+}; done
+
+echo "}" >> ashrc.build
+
+echo "known bug: please remove the last , in ashrc.build"
+echo "don't forget to copy ashrc.build to ~/.ashrc"

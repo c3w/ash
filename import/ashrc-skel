@@ -1,0 +1,4 @@
+	"%%SHORTNAME%%":
+		{ "fqdn": "%%FQDN%%",
+		  "type": "%%TYPE%%"
+		},
