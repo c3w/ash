@@ -1,8 +1,11 @@
-'Ash' v0.2
+'Ash' v0.3
 http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 
+2013DEC20 c3w
+	. added ash_helper_fqdn to provide auto-complete to other network-y apps, such as ssh
+		. complete -W "$(~/bin/ash_helper_fqdn)" ssh
 2013AUG13 c3w
 	. added example Terminal profiles
 	. added a csv importer that accepts: shortname,fqdn,profile type

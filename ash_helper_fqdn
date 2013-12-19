@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+ashrc = ENV['HOME'] + "/.ashrc"
+$tunnel = ""
+host = ARGV[0]
+$default_profile = "Pro"
+
+f = File.open(ashrc, 'r')
+json = f.read
+hash = JSON.parse(json)
+
+stuff = hash.select{|key, hash| key=""}
+
+stuff.each do|k,v|
+    v.each do|key, value|
+      case key
+        when "fqdn"
+         puts value
+      end
+    end
+end
+
