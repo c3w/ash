@@ -1,0 +1,12 @@
+#!/bin/bash
+
+link=$(basename $0)
+if [ ${link} == "@" ]; then {
+	type="Pro"
+} else {
+	type=${link##@}
+}; fi
+
+osascript <<EOF
+tell app "Terminal" to set current settings of first window to settings set "$type"
+EOF

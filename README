@@ -3,6 +3,10 @@ http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 
+2013DEC23 c3w
+	. added '@' bash script for changing Terminal profiles on the fly.
+	. copy to your ~/bin dir and "ln -s @ @database" for example
+	. run "@database" and "@" to return to "Pro" Terminal profile
 2013DEC20 c3w
 	. added ash_helper_fqdn to provide auto-complete to other network-y apps, such as ssh
 		. complete -W "$(~/bin/ash_helper_fqdn)" ssh
