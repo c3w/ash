@@ -10,6 +10,14 @@ rescue
   f = File.open(ashrc, 'r')
 end
 
+begin
+  sshrc = "./.ssh/id_dsa"
+  sshkey = File.exist?(sshrc)
+rescue
+  sshrc = ENV['HOME'] + "/.ssh/id_dsa"
+  sshtest = File.exist?(sshtest)
+end
+
 $tunnel = ""
 host = ARGV[0]
 $default_profile = "Pro"
@@ -46,9 +54,9 @@ stuff.each do|k,v|
     system(cmd)
 
     if $tunnel != ""
-      cmd = "ssh -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
+      cmd = "ssh -i #{sshrc} -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
     else
-      cmd = "ssh -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
+      cmd = "ssh -i #{sshrc} -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
     end
     system(cmd)
 end
