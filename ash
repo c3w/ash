@@ -12,10 +12,10 @@ end
 
 begin
   sshrc = "./.ssh/id_dsa"
-  sshkey = File.exist?(sshrc)
+  sshkey = File.exist?(sshrc, 'r')
 rescue
   sshrc = ENV['HOME'] + "/.ssh/id_dsa"
-  sshtest = File.exist?(sshtest)
+  sshtest = File.exist?(sshrc)
 end
 
 $tunnel = ""
