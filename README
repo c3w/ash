@@ -3,6 +3,8 @@ http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 
+2014JUL21 c3w
+	. now reads ./.ashrc and optionally overloads cd() w/ or w/o RVM for per-directory TAB completion
 2013DEC23 c3w
 	. added '@' bash script for changing Terminal profiles on the fly.
 	. copy to your ~/bin dir and "ln -s @ @database" for example

@@ -1,0 +1,14 @@
+### not running RVM? just add these helper scripts
+#
+alias cd="cd $@ && \
+        complete -W "$(~/bin/ash_helper)" ash && \
+        complete -W "$(~/bin/ash_helper_fqdn)" ssh \
+"
+
+### running RVM?  let's hijack their cd() overload
+__rvm_do_with_env_after()
+{
+        complete -W "$(~/bin/ash_helper)" ash
+        complete -W "$(~/bin/ash_helper_fqdn)" ssh
+            __rvm_teardown
+    }

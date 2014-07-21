@@ -2,12 +2,18 @@
 
 require 'json'
 
-ashrc = ENV['HOME'] + "/.ashrc"
+begin
+	  ashrc = "./.ashrc"
+	    f = File.open(ashrc, 'r')
+rescue
+	  ashrc = ENV['HOME'] + "/.ashrc"
+	    f = File.open(ashrc, 'r')
+end
+
 $tunnel = ""
 host = ARGV[0]
 $default_profile = "Pro"
 
-f = File.open(ashrc, 'r')
 json = f.read
 hash = JSON.parse(json)
 
