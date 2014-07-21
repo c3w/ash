@@ -12,7 +12,7 @@ end
 
 begin
   sshrc = "./.ssh/id_dsa"
-  sshkey = File.exist?(sshrc, 'r')
+  sshkey = File.exist?(sshrc)
 rescue
   sshrc = ENV['HOME'] + "/.ssh/id_dsa"
   sshtest = File.exist?(sshrc)
