@@ -10,12 +10,21 @@ rescue
   f = File.open(ashrc, 'r')
 end
 
+
 begin
-  sshrc = "./.ssh/id_dsa"
-  sshkey = File.open(sshrc, 'r')
-rescue
-  sshrc = ENV['HOME'] + "/.ssh/id_dsa"
-  sshtest = File.open(sshrc, 'r')
+  if sshrc = File.exist?("./.ssh/id_dsa")
+    sshrc = "./.ssh/id_dsa"
+    postCmd = ""
+  elsif sshrcTest = File.exist?("./.ssh/id_dsa.gpg")
+    sshrc = "./.ssh/id_dsa.gpg"
+    sshrcPlain=sshrc.gsub(".gpg", "")
+    cmd = "gpg -o #{sshrcPlain} -d #{sshrc} >/dev/null 2>&1 && chmod og-rwx #{sshrcPlain}"
+    system(cmd)
+    sshrc = sshrcPlain
+    postCmd = "rm -f #{sshrc}"
+  else
+    sshrc = ENV['HOME'] + "/.ssh/id_dsa"
+    postCmd = ""
 end
 
 $tunnel = ""
@@ -56,10 +65,14 @@ stuff.each do|k,v|
     if $tunnel != ""
       cmd = "ssh -i #{sshrc} -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
     else
+      sshrcPlain=sshrc.gsub(".gpg", "")
       cmd = "ssh -i #{sshrc} -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
     end
     system(cmd)
+    system(postCmd)
 end
 
 cmd = "echo 'tell app \"Terminal\" to set current settings of first window to settings set \"#{$default_profile}\"' | osascript"
     system(cmd)
+
+end

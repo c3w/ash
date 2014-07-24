@@ -1,9 +1,11 @@
-'Ash' v0.4
+'Ash' v0.5
 http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 2nd DEMO   @ https://www.youtube.com/watch?v=WjrjIMcS1NU&feature=youtube_gdata_player
 
+2014JUL24 c3w
+	. now decrypts ./.ssh/id_dsa.gpg on the fly and deletes it on exit - good for private githubs
 2014JUL21 c3w
 	. now reads ./.ashrc and optionally overloads cd() w/ or w/o RVM for per-directory TAB completion
 	. now looks at ./.ssh/id_dsa and fails back to ~/.ssh/id_dsa - for multiple key environments
