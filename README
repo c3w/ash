@@ -3,6 +3,7 @@ http://github.com/c3w/ash
 
 DEMO VIDEO @ http://www.youtube.com/watch?v=OH6QmnTeoEg&feature=youtube_gdata_player
 2nd DEMO   @ https://www.youtube.com/watch?v=WjrjIMcS1NU&feature=youtube_gdata_player
+3rd DEMO   @ https://www.youtube.com/watch?v=XTvhacQ2M3g&feature=youtube_gdata_player
 
 2014JUL24 c3w
 	. now decrypts ./.ssh/id_dsa.gpg on the fly and deletes it on exit - good for private githubs
