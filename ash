@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'json'
+require 'etc'
 
 begin
   ashrc = "./.ashrc"
@@ -12,12 +13,13 @@ end
 
 
 begin
+  localuser=Etc.getlogin 
   if sshrc = File.exist?("./.ssh/id_dsa")
     sshrc = "./.ssh/id_dsa"
     postCmd = ""
-  elsif sshrcTest = File.exist?("./.ssh/id_dsa.gpg")
-    sshrc = "./.ssh/id_dsa.gpg"
-    sshrcPlain=sshrc.gsub(".gpg", "")
+  elsif sshrcTest = File.exist?("./.ssh/id_dsa.#{localuser}.gpg")
+    sshrc = "./.ssh/id_dsa.#{localuser}.gpg"
+    sshrcPlain=sshrc.gsub("#{localuser}.gpg", "")
     cmd = "gpg -o #{sshrcPlain} -d #{sshrc} >/dev/null 2>&1 && chmod og-rwx #{sshrcPlain}"
     system(cmd)
     sshrc = sshrcPlain
