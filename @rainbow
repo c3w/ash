@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in ~/bin/@*; do {
+	[ $(basename ${file}) == '@rainbow' ] && true || ${file};
+}; done
+@
