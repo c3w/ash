@@ -14,14 +14,20 @@ echo "// ashRC github.com/c3w/ash" > ashrc.build
 echo >> ashrc.build
 echo "{" >> ashrc.build
 
+LINES=$(wc -l ${1} |awk '{print $1}')
+_curline=0
+
 for line in $(cat $1); do {
+        ((_curline++))
 	shortname=$(echo ${line}|cut -d, -f1)
 	fqdn=$(echo ${line}|cut -d, -f2)
 	type=$(echo ${line}|cut -d, -f3)
-	cat ashrc-skel | sed -e "s/%%SHORTNAME%%/$shortname/g;s/%%FQDN%%/$fqdn/g;s/%%TYPE%%/$type/g" >> ashrc.build
+        [ ${_curline} -eq ${LINES} ] && \
+	cat ashrc-skel | sed -e "s/%%SHORTNAME%%/$shortname/g;s/%%FQDN%%/$fqdn/g;s/%%TYPE%%/$type/g;s/%%CONTINUE%%//g;" >> ashrc.build \
+	|| \
+	cat ashrc-skel | sed -e "s/%%SHORTNAME%%/$shortname/g;s/%%FQDN%%/$fqdn/g;s/%%TYPE%%/$type/g;s/%%CONTINUE%%/,/g;" >> ashrc.build
 }; done
 
 echo "}" >> ashrc.build
 
-echo "known bug: please remove the last , in ashrc.build"
 echo "don't forget to copy ashrc.build to ~/.ashrc"
