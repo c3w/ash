@@ -58,6 +58,8 @@ stuff.each do|k,v|
 	  $tunnel_user = "-l #{value} "
         when "screen"
 	  $screen = "screen -x -r #{value} "
+        when "options"
+          $options = "#{value}"
       end
     end
 
@@ -65,10 +67,10 @@ stuff.each do|k,v|
     system(cmd)
 
     if $tunnel != ""
-      cmd = "ssh -i #{sshrc} -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
+      cmd = "ssh #{$options} -i #{sshrc} -A #{$tunnel} #{$tunnel_user} #{$tunnel_port} \"#{$screen} ssh #{$port} -t #{$fqdn} #{$user}\""
     else
       sshrcPlain=sshrc.gsub(".gpg", "")
-      cmd = "ssh -i #{sshrc} -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
+      cmd = "ssh #{$options} -i #{sshrc} -A #{$port} #{$user} #{$fqdn} -t #{$screen}"
     end
     system(cmd)
     system(postCmd)
